@@ -37,6 +37,13 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 ## Dev Journal
 
+### May 14, 2025
+
+- Modifications to navbar
+- Added initial version of landing page
+- Added additional routes
+- TODO: turn cards on landing page into components, use icons, dark mode toggle, responsive navbar
+
 ### May 13, 2025
 
 - Added footer and navigation
