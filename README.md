@@ -42,7 +42,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 - Modifications to navbar
 - Added initial version of landing page
 - Added additional routes
-- TODO: turn cards on landing page into components, use icons, dark mode toggle, responsive navbar
+- TODO: turn cards on landing page into components, use icons, dark mode toggle, responsive navbar. Add tests
 
 ### May 13, 2025
 
