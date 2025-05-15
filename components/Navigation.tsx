@@ -23,7 +23,13 @@ export default function Navigation() {
             Ora
           </Link>
           
-          <div className="flex space-x-8">
+          <div className="flex space-x-6">
+            <Link 
+              href="/scripture" 
+              className={`${navLinkClass} ${isActive('/scripture')}`}
+            >
+              Scripture
+            </Link>
             <Link 
               href="/journal" 
               className={`${navLinkClass} ${isActive('/journal')}`}
@@ -35,12 +41,6 @@ export default function Navigation() {
               className={`${navLinkClass} ${isActive('/lectio')}`}
             >
               Lectio
-            </Link>
-            <Link 
-              href="/about" 
-              className={`${navLinkClass} ${isActive('/about')}`}
-            >
-              About
             </Link>
           </div>
         </div>
