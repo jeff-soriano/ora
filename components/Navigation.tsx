@@ -25,22 +25,31 @@ export default function Navigation() {
           
           <div className="flex space-x-6">
             <Link 
-              href="/scripture" 
-              className={`${navLinkClass} ${isActive('/scripture')}`}
-            >
-              Scripture
-            </Link>
-            <Link 
               href="/journal" 
               className={`${navLinkClass} ${isActive('/journal')}`}
             >
               Journal
             </Link>
+            
             <Link 
               href="/lectio" 
               className={`${navLinkClass} ${isActive('/lectio')}`}
             >
               Lectio
+            </Link>
+
+            <Link 
+              href="/scripture" 
+              className={`${navLinkClass} ${isActive('/scripture')}`}
+            >
+              Scripture
+            </Link>
+            
+            <Link 
+              href="/about" 
+              className={`${navLinkClass} ${isActive('/about')}`}
+            >
+              About
             </Link>
           </div>
         </div>
