@@ -7,36 +7,38 @@ export default function Navigation() {
   const pathname = usePathname();
 
   const isActive = (path: string) => {
-    return pathname === path ? 'text-blue-600 dark:text-blue-400' : 'text-gray-600 dark:text-gray-300';
+    return pathname === path ? 'border-[var(--color-accent-gold)]' : 'text-[var(--color-text)] dark:text-[var(--color-text-dark)] border-transparent';
   };
 
+  const navLinkClass = 'text-[var(--color-text)] dark:text-[var(--color-text-dark)] border-b-2 hover:text-[var(--color-accent-gold)] hover:border-[var(--color-accent-gold)] transition-all duration-300 py-1';
+
   return (
-    <nav className="sticky top-0 z-50 w-full bg-white dark:bg-black border-b border-gray-200 dark:border-gray-800">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav className="sticky top-0 z-50 w-full bg-[var(--color-background)] dark:bg-[var(--color-background-dark)] border-b border-[var(--color-accent-gold)] border-opacity-20 backdrop-blur-sm">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <Link 
             href="/" 
-            className="text-xl font-bold text-gray-900 dark:text-white"
+            className="font-[var(--font-primary)] text-2xl font-semibold text-[var(--color-text)] dark:text-[var(--color-text-dark)] hover-gentle-glow"
           >
             Ora
           </Link>
           
-          <div className="flex space-x-8">
+          <div className="flex space-x-8 font-[var(--font-secondary)]">
             <Link 
               href="/journal" 
-              className={`${isActive('/journal')} hover:text-blue-600 dark:hover:text-blue-400 transition-colors`}
+              className={`${navLinkClass} ${isActive('/journal')}`}
             >
               Journal
             </Link>
             <Link 
               href="/lectio" 
-              className={`${isActive('/lectio')} hover:text-blue-600 dark:hover:text-blue-400 transition-colors`}
+              className={`${navLinkClass} ${isActive('/lectio')}`}
             >
               Lectio
             </Link>
             <Link 
               href="/about" 
-              className={`${isActive('/about')} hover:text-blue-600 dark:hover:text-blue-400 transition-colors`}
+              className={`${navLinkClass} ${isActive('/about')}`}
             >
               About
             </Link>
