@@ -7,23 +7,23 @@ export default function Navigation() {
   const pathname = usePathname();
 
   const isActive = (path: string) => {
-    return pathname === path ? 'border-[var(--color-accent-gold)]' : 'text-[var(--color-text)] dark:text-[var(--color-text-dark)] border-transparent';
+    return pathname === path ? 'border-black' : 'border-transparent';
   };
 
-  const navLinkClass = 'text-[var(--color-text)] dark:text-[var(--color-text-dark)] border-b-2 hover:text-[var(--color-accent-gold)] hover:border-[var(--color-accent-gold)] transition-all duration-300 py-1';
+  const navLinkClass = 'border-b-2 hover:border-black transition-all duration-300 py-1';
 
   return (
-    <nav className="sticky top-0 z-50 w-full bg-[var(--color-background)] dark:bg-[var(--color-background-dark)] border-b border-[var(--color-accent-gold)] border-opacity-20 backdrop-blur-sm">
+    <nav className="sticky top-0 z-50 w-full border-b border-opacity-20">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <Link 
             href="/" 
-            className="font-[var(--font-primary)] text-2xl font-semibold text-[var(--color-text)] dark:text-[var(--color-text-dark)] hover-gentle-glow"
+            className="text-2xl font-semibold"
           >
             Ora
           </Link>
           
-          <div className="flex space-x-8 font-[var(--font-secondary)]">
+          <div className="flex space-x-8">
             <Link 
               href="/journal" 
               className={`${navLinkClass} ${isActive('/journal')}`}
