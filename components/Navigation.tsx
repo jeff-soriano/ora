@@ -13,7 +13,7 @@ export default function Navigation() {
   const navLinkClass = 'border-b-2 hover:border-black transition-all duration-300 py-1';
 
   return (
-    <nav className="sticky top-0 z-50 w-full border-b border-opacity-20">
+    <nav className="sticky top-0 z-50 w-full border-b border-opacity-20 bg-white">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <Link 
