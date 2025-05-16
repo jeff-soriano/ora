@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { FeatureCard } from "@/components/FeatureCard";
+import { ScriptureIcon, JournalIcon, LectioIcon } from "@/components/Icons";
 
 export default function Home() {
   return (
@@ -28,41 +30,26 @@ export default function Home() {
 
       {/* Feature Cards */}
       <section className="max-w-6xl w-full mt-10 grid grid-cols-1 md:grid-cols-3 gap-6 px-4">
-        <Link href="/scripture" className="group">
-          <div className="p-8 rounded-2xl border text-center space-y-4 hover:border-black transition-colors cursor-pointer">
-            <div className="flex justify-center">
-              <svg className="w-12 h-12" viewBox="0 0 24 24">
-                <path fill="currentColor" d="M6 2h12a2 2 0 012 2v16a2 2 0 01-2 2H6a2 2 0 01-2-2V4a2 2 0 012-2zm0 2v16h12V4H6z"/>
-              </svg>
-            </div>
-            <h2 className="text-xl font-serif">Daily Scripture</h2>
-            <p className="text-gray-600">Read and reflect on the Word of God, one day at a time</p>
-          </div>
-        </Link>
+        <FeatureCard
+          href="/scripture"
+          icon={<ScriptureIcon />}
+          title="Daily Scripture"
+          description="Read and reflect on the Word of God, one day at a time"
+        />
 
-        <Link href="/journal" className="group">
-          <div className="p-8 rounded-2xl border text-center space-y-4 hover:border-black transition-colors cursor-pointer">
-            <div className="flex justify-center">
-              <svg className="w-12 h-12" viewBox="0 0 24 24">
-                <path fill="currentColor" d="M20 2a2 2 0 012 2v16a2 2 0 01-2 2H4a2 2 0 01-2-2V4a2 2 0 012-2h16zm-4 3H8v2h8V5zm0 4H8v2h8V9zm0 4H8v2h8v-2z"/>
-              </svg>
-            </div>
-            <h2 className="text-xl font-serif">Prayer Journal</h2>
-            <p className="text-gray-600">Write freely, receive gentle AI reflections a spiritual director</p>
-          </div>
-        </Link>
+        <FeatureCard
+          href="/journal"
+          icon={<JournalIcon />}
+          title="Prayer Journal"
+          description="Write freely, receive gentle AI reflections like a spiritual director"
+        />
 
-        <Link href="/lectio" className="group">
-          <div className="p-8 rounded-2xl border text-center space-y-4 hover:border-black transition-colors cursor-pointer">
-            <div className="flex justify-center">
-              <svg className="w-12 h-12" viewBox="0 0 24 24">
-                <path fill="currentColor" d="M12 2l2.4 7.4h7.6l-6.2 4.5 2.4 7.4-6.2-4.5-6.2 4.5 2.4-7.4-6.2-4.5h7.6z"/>
-              </svg>
-            </div>
-            <h2 className="text-xl font-serif">Lectio Divina</h2>
-            <p className="text-gray-600">Guided, ancient prayer to hear God's voice in Scripture</p>
-          </div>
-        </Link>
+        <FeatureCard
+          href="/lectio"
+          icon={<LectioIcon />}
+          title="Lectio Divina"
+          description="Guided, ancient prayer to hear God's voice in Scripture"
+        />
       </section>
 
       {/* Quote Section */}
