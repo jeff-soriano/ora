@@ -1,8 +1,11 @@
 import Link from "next/link";
 import { FeatureCard } from "@/components/FeatureCard";
-import { ScriptureIcon, JournalIcon, LectioIcon } from "@/components/Icons";
+import { FaBible, FaCross } from "react-icons/fa";
+import { GiQuill } from "react-icons/gi";
 
 export default function Home() {
+  const iconSize = "5rem";
+
   return (
     <div className="min-h-screen flex flex-col items-center px-4 py-12 md:py-20">
       {/* Hero Section */}
@@ -32,21 +35,21 @@ export default function Home() {
       <section className="max-w-6xl w-full mt-10 grid grid-cols-1 md:grid-cols-3 gap-6 px-4">
         <FeatureCard
           href="/scripture"
-          icon={<ScriptureIcon />}
+          icon={<FaBible size={iconSize}/>}
           title="Daily Scripture"
           description="Read and reflect on the Word of God, one day at a time"
         />
 
         <FeatureCard
           href="/journal"
-          icon={<JournalIcon />}
+          icon={<GiQuill size={iconSize}/>}
           title="Prayer Journal"
           description="Write freely, receive gentle AI reflections like a spiritual director"
         />
 
         <FeatureCard
           href="/lectio"
-          icon={<LectioIcon />}
+          icon={<FaCross size={iconSize}/>}
           title="Lectio Divina"
           description="Guided, ancient prayer to hear God's voice in Scripture"
         />
