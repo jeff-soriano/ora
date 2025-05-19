@@ -9,8 +9,8 @@ interface FeatureCardProps {
 
 export function FeatureCard({ href, icon, title, description }: FeatureCardProps) {
   return (
-    <Link href={href} className="group">
-      <div className="p-8 rounded-2xl border text-center space-y-4 hover:border-black transition-colors cursor-pointer">
+    <Link href={href}>
+      <div className="h-full p-8 rounded-2xl border text-center space-y-4 hover:border-black transition-colors cursor-pointer">
         <div className="flex justify-center">
           {icon}
         </div>
