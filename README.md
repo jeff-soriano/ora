@@ -37,12 +37,20 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 ## Dev Journal
 
+### May 19, 2025
+
+- Use react-icons
+- TODO: dark mode toggle, responsive navbar. Add tests. Get prettier to work
+
+### May 15, 2025
+
+- Turn FeatureCards into components
+
 ### May 14, 2025
 
 - Modifications to navbar
 - Added initial version of landing page
 - Added additional routes
-- TODO: turn cards on landing page into components, use icons, dark mode toggle, responsive navbar. Add tests
 
 ### May 13, 2025
 
