@@ -58,7 +58,7 @@ export default function Home() {
       {/* Quote Section */}
       <section className="max-w-3xl w-full mt-20 text-center space-y-4">
         <blockquote className="text-2xl md:text-3xl font-serif italic">
-          "Prayer is the inner bath of love into which the soul plunges itself."
+          &ldquo;Prayer is the inner bath of love into which the soul plunges itself.&rdquo;
         </blockquote>
         <cite className="text-gray-600">— St. Jean-Marie Vianney</cite>
       </section>
@@ -67,7 +67,7 @@ export default function Home() {
       <section className="max-w-2xl w-full mt-20 text-center">
         <h2 className="text-2xl font-serif mb-4">ABOUT ORA</h2>
         <p className="text-gray-600">
-          Ora (Latin for 'pray') is your personal chapel in the digital world. 
+          Ora (Latin for &lsquo;pray&rsquo;) is your personal chapel in the digital world. 
           Designed to help you slow down, hear God, and grow in faith—one reflection at a time.
         </p>
       </section>
