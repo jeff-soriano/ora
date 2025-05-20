@@ -40,6 +40,8 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 ### May 19, 2025
 
 - Use react-icons
+- Deployed to Vercel
+- Implemented initial version of Scripture page
 - TODO: dark mode toggle, responsive navbar. Add tests. Get prettier to work
 
 ### May 15, 2025
