@@ -24,7 +24,7 @@ export default function ScripturePage() {
       ) : (
         <>
           {/* Scripture Block */}
-          <div className="max-w-2xl mx-auto mb-6">
+          <div className="max-w-2xl mx-auto mb-6 animate-fade-in">
             <p className="text-xl md:text-2xl font-serif leading-relaxed mb-6">
               Peace I leave with you;<br />
               my peace I give to you. Not<br />
@@ -39,7 +39,7 @@ export default function ScripturePage() {
           </div>
 
           {/* AI Reflection Block */}
-          <div className="max-w-2xl mx-auto mt-6">
+          <div className="max-w-2xl mx-auto mt-6 animate-fade-in">
             <div className="rounded-2xl bg-gray-100 text-gray-900 p-6 md:p-8 shadow-sm flex flex-col space-y-1">
               <div className="flex items-start">
                 <span className="text-2xl text-gray-400 mr-2 font-serif">&ldquo;</span>
