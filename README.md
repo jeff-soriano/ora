@@ -37,6 +37,12 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 ## Dev Journal
 
+### May 20, 2025
+
+- Set up gpt api keys and tested sample response
+- TODO: Use gpt-4.1-mini to pick scripture verse and reflection of the day
+- QUESTIONS: Can you shape the response of the api? e.g. verse, text, reflection
+
 ### May 19, 2025
 
 - Use react-icons
