@@ -1,40 +1,65 @@
-'use client'
+import { Suspense } from 'react'
+import OpenAI from "openai";
+import { cache } from 'react';
 
-import { useEffect, useState } from "react";
+const client = new OpenAI({apiKey: process.env.OPENAI_API_KEY});
 
-export default function ScripturePage() {
-  const [loading, setLoading] = useState(true);
+const getBibleVerse = cache(async (date: string) => {
+  const response = await client.responses.create({
+    model: "gpt-4.1-mini",
+    input: `Today is ${date}. Choose a passage from the Bible that is in line with today's Catholic lectionary reading and is fruitful for spiritual reflection. The passage should be 3-4 verses long. Use the Revised Standard Version 2nd Catholic Edition(RSV) of the Bible. Only return the passage, no other text. Do not return the citation of the passage, just the text of the passage.`
+  });
+  return response.output_text;
+});
 
-  useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 3000);
-    return () => clearTimeout(timer);
-  }, []);
+const getBibleVerseCitation = cache(async (bibleVerse: string) => {
+  const response = await client.responses.create({
+    model: "gpt-4.1-mini",
+    input: `Given the following passage from the Bible, return the citation of the passage. Use the Revised Standard Version 2nd Catholic Edition(RSV) of the Bible. Only return the citation, no other text.
+    ${bibleVerse}`
+  });
+  return response.output_text;
+});
+
+const getBibleVerseReflection = cache(async (bibleVerse: string) => {
+  const response = await client.responses.create({
+    model: "gpt-4.1-mini",
+    input: `Write as if you are a warm, trusted spiritual director guiding someone through quiet time with God. Write 2–3 sentences of gentle, pastoral reflection that invites the reader into contemplative prayer based on the following passage from the Bible:
+    ${bibleVerse}`
+  });
+  return response.output_text;
+});
+
+function Fallback() {
+  return (
+    <div className="mt-6 text-xl text-gray-500 italic font-serif animate-pulse">
+      Opening the Word...
+    </div>
+  )
+}
+
+export default async function ScripturePage() {
+  const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
+  const bibleVerse = await getBibleVerse(today);
+  const bibleVerseCitation = await getBibleVerseCitation(bibleVerse);
+  const bibleVerseReflection = await getBibleVerseReflection(bibleVerse);
 
   return (
-    <div className="min-h-screen flex flex-col items-center px-4 py-12 md:py-20 bg-background">
-      {/* Title */}
-      <h1 className="text-3xl md:text-4xl font-serif mb-8">
+    <Suspense fallback={<Fallback />}>
+      <div className="min-h-screen flex flex-col items-center px-4 py-12 md:py-20 bg-background">
+        {/* Title */}
+        <h1 className="text-3xl md:text-4xl font-serif mb-8">
         Today&rsquo;s Scripture
       </h1>
 
-      {loading ? (
-        <div className="mt-6 text-xl text-gray-500 italic font-serif animate-pulse">
-          Opening the Word...
-        </div>
-      ) : (
-        <>
+    
           {/* Scripture Block */}
           <div className="max-w-2xl mx-auto mb-6 animate-fade-in">
             <p className="text-xl md:text-2xl font-serif leading-relaxed mb-6">
-              Peace I leave with you;<br />
-              my peace I give to you. Not<br />
-              as the world gives do I give<br />
-              to you. Let not your hearts<br />
-              be troubled, neither let them<br />
-              be afraid.
+              {bibleVerse}
             </p>
             <div className="text-lg md:text-xl font-serif text-right mt-4 mb-2">
-              - John 14:27
+              - {bibleVerseCitation}
             </div>
           </div>
 
@@ -44,7 +69,7 @@ export default function ScripturePage() {
               <div className="flex items-start">
                 <span className="text-2xl text-gray-400 mr-2 font-serif">&ldquo;</span>
                 <span className="text-lg md:text-xl">
-                  Christ speaks peace into the hearts of the anxious. What might He be saying to you today?
+                  {bibleVerseReflection}
                 </span>
               </div>
               <div className="flex justify-end items-end w-full space-x-2">
@@ -53,8 +78,7 @@ export default function ScripturePage() {
               </div>
             </div>
           </div>
-        </>
-      )}
-    </div>
+      </div>
+    </Suspense>
   );
 } 
