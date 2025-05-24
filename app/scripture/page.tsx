@@ -1,4 +1,3 @@
-import { Suspense } from 'react'
 import OpenAI from "openai";
 import { cache } from 'react';
 
@@ -7,7 +6,7 @@ const client = new OpenAI({apiKey: process.env.OPENAI_API_KEY});
 const getBibleVerse = cache(async (date: string) => {
   const response = await client.responses.create({
     model: "gpt-4.1-mini",
-    input: `Today is ${date}. Choose a passage from the Bible that is in line with today's Catholic lectionary reading and is fruitful for spiritual reflection. The passage should be 3-4 verses long. Use the Revised Standard Version 2nd Catholic Edition(RSV) of the Bible. Only return the passage, no other text. Do not return the citation of the passage, just the text of the passage.`
+    input: `Today is ${date}. Choose a passage from the Bible that is in line with today's Catholic lectionary reading and is fruitful for spiritual reflection. The passage should be 3-4 verses long. Use the Revised Standard Version 2nd Catholic Edition(RSV) of the Bible. Only return the passage, no other text. Do not return the citation of the passage, just the text of the passage. Do not add quotation marks to the passage.`
   });
   return response.output_text;
 });
@@ -24,19 +23,11 @@ const getBibleVerseCitation = cache(async (bibleVerse: string) => {
 const getBibleVerseReflection = cache(async (bibleVerse: string) => {
   const response = await client.responses.create({
     model: "gpt-4.1-mini",
-    input: `Write as if you are a warm, trusted spiritual director guiding someone through quiet time with God. Write 2–3 sentences of gentle, pastoral reflection that invites the reader into contemplative prayer based on the following passage from the Bible:
+    input: `Write as if you are a warm, trusted spiritual director guiding someone through quiet time with God. Write 2–3 sentences of gentle, pastoral reflection that invites the reader into contemplative prayer based on the following passage from the Bible, ending with a question that is fruitful for spiritual reflection:
     ${bibleVerse}`
   });
   return response.output_text;
 });
-
-function Fallback() {
-  return (
-    <div className="mt-6 text-xl text-gray-500 italic font-serif animate-pulse">
-      Opening the Word...
-    </div>
-  )
-}
 
 export default async function ScripturePage() {
   const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
@@ -45,7 +36,6 @@ export default async function ScripturePage() {
   const bibleVerseReflection = await getBibleVerseReflection(bibleVerse);
 
   return (
-    <Suspense fallback={<Fallback />}>
       <div className="min-h-screen flex flex-col items-center px-4 py-12 md:py-20 bg-background">
         {/* Title */}
         <h1 className="text-3xl md:text-4xl font-serif mb-8">
@@ -79,6 +69,5 @@ export default async function ScripturePage() {
             </div>
           </div>
       </div>
-    </Suspense>
   );
 } 
