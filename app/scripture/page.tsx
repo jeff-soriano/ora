@@ -3,6 +3,12 @@ import { cache } from 'react';
 
 const client = new OpenAI({apiKey: process.env.OPENAI_API_KEY});
 
+// Force dynamic rendering so that react cache works as expected
+export const dynamic = "force-dynamic";
+
+// This will cache the result per day (per server instance)
+// We do this so that the same passage is the same for all users each day
+// Doing this for MVP but ideal solution is using something like Redis
 const getBibleVerse = cache(async (date: string) => {
   const response = await client.responses.create({
     model: "gpt-4.1-mini",
