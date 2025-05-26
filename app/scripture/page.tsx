@@ -1,39 +1,39 @@
 import OpenAI from "openai";
-import { cache } from 'react';
 
 const client = new OpenAI({apiKey: process.env.OPENAI_API_KEY});
 
-// Force dynamic rendering so that react cache works as expected
-export const dynamic = "force-dynamic";
+// Revalidate the page every 24 hours so that we get a new passage
+// every day. Doing this for MVP but ideal solution is using something 
+// like Redis. Because really this is only invalidating 24 hours after 
+// the first request. So if the first cache happens at 11:59 pm we 
+// won't get a new one at 12:00 am
+export const revalidate = 86400; // 24 hours in seconds
 
-// This will cache the result per day (per server instance)
-// We do this so that the same passage is the same for all users each day
-// Doing this for MVP but ideal solution is using something like Redis
-const getBibleVerse = cache(async (date: string) => {
+const getBibleVerse = async (date: string) => {
   const response = await client.responses.create({
     model: "gpt-4.1-mini",
     input: `Today is ${date}. Choose a passage from the Bible that is in line with today's Catholic lectionary reading and is fruitful for spiritual reflection. The passage should be 3-4 verses long. Use the Revised Standard Version 2nd Catholic Edition(RSV) of the Bible. Only return the passage, no other text. Do not return the citation of the passage, just the text of the passage. Do not add quotation marks to the passage.`
   });
   return response.output_text;
-});
+};
 
-const getBibleVerseCitation = cache(async (bibleVerse: string) => {
+const getBibleVerseCitation = async (bibleVerse: string) => {
   const response = await client.responses.create({
     model: "gpt-4.1-mini",
     input: `Given the following passage from the Bible, return the citation of the passage. Use the Revised Standard Version 2nd Catholic Edition(RSV) of the Bible. Only return the citation, no other text.
     ${bibleVerse}`
   });
   return response.output_text;
-});
+};
 
-const getBibleVerseReflection = cache(async (bibleVerse: string) => {
+const getBibleVerseReflection = async (bibleVerse: string) => {
   const response = await client.responses.create({
     model: "gpt-4.1-mini",
     input: `Write as if you are a warm, trusted spiritual director guiding someone through quiet time with God. Write 2–3 sentences of gentle, pastoral reflection that invites the reader into contemplative prayer based on the following passage from the Bible, ending with a question that is fruitful for spiritual reflection:
     ${bibleVerse}`
   });
   return response.output_text;
-});
+};
 
 export default async function ScripturePage() {
   const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
