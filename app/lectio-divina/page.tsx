@@ -1,4 +1,6 @@
-export default function LectioPage() {
+import Link from "next/link";
+
+export default function LectioDivinaPage() {
   return (
     <div className="min-h-screen text-center md:text-left flex flex-col items-center px-6 py-12 md:py-20 bg-background">
       {/* Title */}
@@ -16,9 +18,11 @@ export default function LectioPage() {
         spending at least a few minutes of meditation on each step.
       </p>
 
-      <button className="bg-amber-800 text-white text-xl md:text-2xl px-6 py-3 rounded-md hover:bg-amber-900 transition-colors hover:cursor-pointer">
-        Begin Lectio Divina
-      </button>
+      <Link href="/lectio-divina/lectio">
+        <button className="bg-amber-800 text-white text-xl md:text-2xl px-6 py-3 rounded-md hover:bg-amber-900 transition-colors hover:cursor-pointer">
+          Begin Lectio Divina
+        </button>
+      </Link>
     </div>
   );
 }
