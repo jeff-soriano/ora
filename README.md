@@ -37,6 +37,20 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 ## Dev Journal
 
+### May 27, 2025
+
+- Cotinuing to experiment with caching. Initial work for lectio divina feature. Move BiblePassage into components folder
+- TODO: dark mode toggle, responsive navbar. Add tests
+- QUESTIONS: Is there a way to have the user select the words in the passage by clicking on them in the Lectio step?
+
+### May 26, 2025
+
+- Still fiddling with caching. May need to set something up with redis?
+
+### May 24, 2025
+
+- Trying to figure out caching in server components for MVP
+
 ### May 20, 2025
 
 - Set up gpt api keys and tested sample response
@@ -48,7 +62,6 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 - Use react-icons
 - Deployed to Vercel
 - Implemented initial version of Scripture page
-- TODO: dark mode toggle, responsive navbar. Add tests. Get prettier to work
 
 ### May 15, 2025
 
