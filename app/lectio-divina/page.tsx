@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function LectioDivinaPage() {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center md:justify-normal bg-[#f8f5ef] px-4 py-8 md:py-20">
+    <div className="min-h-[calc(100vh-64px)] flex flex-col items-center justify-center bg-[#f8f5ef] px-4 py-8 md:py-20">
       <h1 className="text-5xl md:text-6xl font-serif mb-8">Lectio Divina</h1>
       <p className="max-w-2xl text-xl md:text-2xl font-sans mb-8 text-gray-800">
         Lectio Divina (which means &quot;divine reading&quot;) is an ancient
