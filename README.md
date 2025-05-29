@@ -37,11 +37,15 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 ## Dev Journal
 
+### May 28, 2025
+
+- Adding more pages for Lectio Divina feature
+- TODO: have BiblePassage correctly cache one scripture passage a day, to be used consistently across all pages. Dark mode toggle, responsive navbar. Add tests
+- QUESTIONS: Is there a way to have the user select the words in the passage by clicking on them in the Lectio step?
+
 ### May 27, 2025
 
-- Cotinuing to experiment with caching. Initial work for lectio divina feature. Move BiblePassage into components folder
-- TODO: dark mode toggle, responsive navbar. Add tests
-- QUESTIONS: Is there a way to have the user select the words in the passage by clicking on them in the Lectio step?
+- Continuing to experiment with caching. Initial work for lectio divina feature. Move BiblePassage into components folder
 
 ### May 26, 2025
 
