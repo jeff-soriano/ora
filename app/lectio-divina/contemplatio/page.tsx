@@ -2,44 +2,38 @@
 
 import { useRouter } from "next/navigation";
 
-export default function OratioContent({
-  biblePassageComponent,
-}: {
-  biblePassageComponent: React.ReactNode;
-}) {
+export default function ContemplatioStep() {
   const router = useRouter();
 
   const handleNextStep = () => {
-    router.push("/lectio-divina/contemplatio");
+    router.push("/lectio-divina/oratio");
   };
 
   return (
     <div className="min-h-[calc(100vh-64px)] flex flex-col items-center justify-center bg-[#f8f5ef] px-4 py-8">
       <h1 className="text-5xl md:text-6xl font-serif mb-2 text-center">
-        Oratio
+        Contemplatio
       </h1>
       <div className="uppercase tracking-widest font-semibold text-lg mb-8 text-center">
-        Prayer
+        Contemplation
       </div>
       <div className="max-w-2xl w-full">
         <p className="text-2xl md:text-3xl font-serif mb-8 text-center text-gray-900">
-          Turn your reflection into conversation with God. Speak honestly to the
-          Lord.
+          Be with God. Dwell in the Word. Let it transform you without needing
+          to say or do anything.
         </p>
-        <p className="text-3xl md:text-4xl text-center font-serif leading-relaxed mb-8 font-medium">
-          &quot;heirs of God&quot;
+        <p className="block font-bold text-xl md:text-2xl mb-4 text-center text-gray-900 mb-8">
+          Let go of thoughts and words. Rest in God&apos;s presence.
         </p>
-        {biblePassageComponent}
-        <label className="block font-bold text-xl md:text-2xl mb-4 text-center text-gray-900">
-          What would you like to say to God in response to this passage?
-        </label>
-        <textarea className="w-full border border-gray-400 rounded-md px-4 py-3 mb-8 text-lg focus:outline-none focus:ring-2 focus:ring-amber-800 bg-white" />
+        <p className="text-xl md:text-2xl font-serif mb-8 text-center text-gray-900">
+          When you&apos;re ready, click the button below to continue.
+        </p>
         <div className="flex justify-center">
           <button
             onClick={handleNextStep}
             className="bg-black text-white text-lg md:text-xl px-12 py-4 rounded-md hover:bg-gray-900 transition-colors font-semibold shadow-md hover:cursor-pointer"
           >
-            NEXT STEP
+            Amen - Complete My Prayer
           </button>
         </div>
       </div>
