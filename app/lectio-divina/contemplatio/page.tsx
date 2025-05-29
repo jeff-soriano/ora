@@ -6,7 +6,7 @@ export default function ContemplatioStep() {
   const router = useRouter();
 
   const handleNextStep = () => {
-    router.push("/lectio-divina/oratio");
+    router.push("/lectio-divina/complete");
   };
 
   return (
