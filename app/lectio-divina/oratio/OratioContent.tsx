@@ -2,31 +2,36 @@
 
 import { useRouter } from "next/navigation";
 
-export default function MeditatioStep() {
+export default function OratioContent({
+  biblePassageComponent,
+}: {
+  biblePassageComponent: React.ReactNode;
+}) {
   const router = useRouter();
 
   const handleNextStep = () => {
-    router.push("/lectio-divina/oratio");
+    router.push("/lectio-divina/meditatio");
   };
 
   return (
     <div className="min-h-[calc(100vh-64px)] flex flex-col items-center justify-center bg-[#f8f5ef] px-4 py-8">
       <h1 className="text-5xl md:text-6xl font-serif mb-2 text-center">
-        Meditatio
+        Oratio
       </h1>
       <div className="uppercase tracking-widest font-semibold text-lg mb-8 text-center">
-        Meditation
+        Prayer
       </div>
       <div className="max-w-2xl w-full">
         <p className="text-2xl md:text-3xl font-serif mb-8 text-center text-gray-900">
-          Slowly read the words you received in Lectio again. Ponder how they
-          apply to your life.
+          Turn your reflection into conversation with God. Speak honestly to the
+          Lord.
         </p>
         <p className="text-3xl md:text-4xl text-center font-serif leading-relaxed mb-8 font-medium">
           &quot;heirs of God&quot;
         </p>
+        {biblePassageComponent}
         <label className="block font-bold text-xl md:text-2xl mb-4 text-center text-gray-900">
-          What is God saying to you through these words?
+          What would you like to say to God in response to this passage?
         </label>
         <textarea className="w-full border border-gray-400 rounded-md px-4 py-3 mb-8 text-lg focus:outline-none focus:ring-2 focus:ring-amber-800 bg-white" />
         <div className="flex justify-center">
