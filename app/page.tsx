@@ -71,9 +71,9 @@ export default function Home() {
       <section className="max-w-2xl w-full mt-20 text-center">
         <h2 className="text-2xl font-serif mb-4">ABOUT ORA</h2>
         <p className="text-gray-600">
-          Ora (Latin for &lsquo;pray&rsquo;) is your personal chapel in the
-          digital world. Designed to help you slow down, hear God, and grow in
-          faith—one reflection at a time.
+          Ora (Latin for 'pray') is your personal chapel in the digital world.
+          Designed to help you slow down, hear God, and grow in faith—one
+          reflection at a time.
         </p>
       </section>
     </div>
