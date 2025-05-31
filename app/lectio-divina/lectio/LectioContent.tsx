@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 export default function LectioContent({
@@ -8,8 +9,10 @@ export default function LectioContent({
   biblePassageComponent: React.ReactNode;
 }) {
   const router = useRouter();
+  const [lectioReflection, setLectioReflection] = useState("");
 
   const handleNextStep = () => {
+    localStorage.setItem("lectioReflection", lectioReflection);
     router.push("/lectio-divina/meditatio");
   };
 
@@ -32,6 +35,8 @@ export default function LectioContent({
         <input
           type="text"
           className="w-full border border-gray-400 rounded-md px-4 py-3 mb-8 text-lg focus:outline-none focus:ring-2 focus:ring-amber-800 bg-white"
+          value={lectioReflection}
+          onChange={(e) => setLectioReflection(e.target.value)}
         />
         <div className="flex justify-center">
           <button

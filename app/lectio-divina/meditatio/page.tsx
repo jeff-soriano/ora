@@ -1,11 +1,22 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import { useState, useEffect } from "react";
 
 export default function MeditatioStep() {
   const router = useRouter();
+  const [meditatioReflection, setMeditatioReflection] = useState("");
+  const [lectioReflection, setLectioReflection] = useState("");
+
+  useEffect(() => {
+    const storedLectioReflection = localStorage.getItem("lectioReflection");
+    if (storedLectioReflection) {
+      setLectioReflection(storedLectioReflection);
+    }
+  }, []);
 
   const handleNextStep = () => {
+    localStorage.setItem("meditatioReflection", meditatioReflection);
     router.push("/lectio-divina/oratio");
   };
 
@@ -22,13 +33,19 @@ export default function MeditatioStep() {
           Slowly read the words you received in Lectio again. Ponder how they
           apply to your life.
         </p>
-        <p className="text-3xl md:text-4xl text-center font-serif leading-relaxed mb-8 font-medium">
-          &quot;heirs of God&quot;
-        </p>
+        <div className="rounded-2xl bg-gray-200 text-gray-800 p-4 shadow-sm flex flex-col space-y-1 mb-8">
+          <p className="text-2xl md:text-3xl text-center font-serif leading-relaxed font-medium italic">
+            &quot;{lectioReflection}&quot;
+          </p>
+        </div>
         <label className="block font-bold text-xl md:text-2xl mb-4 text-center text-gray-900">
           What is God saying to you through these words?
         </label>
-        <textarea className="w-full border border-gray-400 rounded-md px-4 py-3 mb-8 text-lg focus:outline-none focus:ring-2 focus:ring-amber-800 bg-white" />
+        <textarea
+          className="w-full border border-gray-400 rounded-md px-4 py-3 mb-8 text-lg focus:outline-none focus:ring-2 focus:ring-amber-800 bg-white"
+          value={meditatioReflection}
+          onChange={(e) => setMeditatioReflection(e.target.value)}
+        />
         <div className="flex justify-center">
           <button
             onClick={handleNextStep}
