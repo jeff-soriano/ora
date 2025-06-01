@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import LoadingPage from "@/components/LoadingPage";
+import GenerateAIInsight from "./GenerateAIInsight";
 
 export default function CompleteContent({
   biblePassageComponent,
@@ -51,7 +52,7 @@ export default function CompleteContent({
         with you as you go.
       </p>
       {biblePassageComponent}
-      <div className="w-full max-w-2xl flex flex-col md:text-center gap-10">
+      <div className="w-full max-w-2xl flex flex-col md:text-center gap-10 mb-10">
         <div>
           <h2 className="text-3xl md:text-4xl font-serif font-bold mb-2">
             Lectio
@@ -77,6 +78,11 @@ export default function CompleteContent({
           </p>
         </div>
       </div>
+      <GenerateAIInsight
+        lectioReflection={lectioReflection}
+        meditatioReflection={meditatioReflection}
+        oratioReflection={oratioReflection}
+      />
     </div>
   );
 }
