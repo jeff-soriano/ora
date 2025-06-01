@@ -37,12 +37,16 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 ## Dev Journal
 
+### May 31, 2025
+
+- Add storage of reflections and ai generated insight for lectio divina feature
+- TODO: have BiblePassage correctly cache one scripture passage a day, to be used consistently across all pages. Dark mode toggle, responsive navbar. Add tests
+- QUESTIONS: Is there a way to have the user select the words in the passage by clicking on them in the Lectio step?
+
 ### May 29, 2025
 
 - Added tests
 - TIL: Jest does not support async Server Components
-- TODO: have BiblePassage correctly cache one scripture passage a day, to be used consistently across all pages. Dark mode toggle, responsive navbar. Add tests
-- QUESTIONS: Is there a way to have the user select the words in the passage by clicking on them in the Lectio step?
 
 ### May 28, 2025
 
