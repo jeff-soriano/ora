@@ -19,8 +19,10 @@ export default function OratioContent({
 
     if (storedMeditatioReflection) {
       setMeditatioReflection(storedMeditatioReflection);
+    } else {
+      router.push("/lectio-divina");
     }
-  }, []);
+  }, [router]);
 
   const handleNextStep = () => {
     localStorage.setItem("oratioReflection", oratioReflection);

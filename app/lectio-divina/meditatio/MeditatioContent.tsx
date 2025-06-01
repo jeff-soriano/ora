@@ -16,8 +16,10 @@ export default function MeditatioContent({
     const storedLectioReflection = localStorage.getItem("lectioReflection");
     if (storedLectioReflection) {
       setLectioReflection(storedLectioReflection);
+    } else {
+      router.push("/lectio-divina");
     }
-  }, []);
+  }, [router]);
 
   const handleNextStep = () => {
     localStorage.setItem("meditatioReflection", meditatioReflection);

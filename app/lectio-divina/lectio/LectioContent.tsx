@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
 export default function LectioContent({
@@ -10,6 +10,12 @@ export default function LectioContent({
 }) {
   const router = useRouter();
   const [lectioReflection, setLectioReflection] = useState("");
+
+  useEffect(() => {
+    localStorage.removeItem("lectioReflection");
+    localStorage.removeItem("meditatioReflection");
+    localStorage.removeItem("oratioReflection");
+  }, []);
 
   const handleNextStep = () => {
     localStorage.setItem("lectioReflection", lectioReflection);

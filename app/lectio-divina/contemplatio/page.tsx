@@ -1,9 +1,26 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export default function ContemplatioStep() {
   const router = useRouter();
+
+  useEffect(() => {
+    const storedLectioReflection = localStorage.getItem("lectioReflection");
+    const storedMeditatioReflection = localStorage.getItem(
+      "meditatioReflection"
+    );
+    const storedOratioReflection = localStorage.getItem("oratioReflection");
+
+    if (
+      !storedLectioReflection ||
+      !storedMeditatioReflection ||
+      !storedOratioReflection
+    ) {
+      router.push("/lectio-divina");
+    }
+  }, [router]);
 
   const handleNextStep = () => {
     router.push("/lectio-divina/complete");

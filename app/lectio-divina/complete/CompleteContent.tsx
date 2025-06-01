@@ -1,12 +1,14 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 export default function CompleteContent({
   biblePassageComponent,
 }: {
   biblePassageComponent: React.ReactNode;
 }) {
+  const router = useRouter();
   const [lectioReflection, setLectioReflection] = useState("");
   const [meditatioReflection, setMeditatioReflection] = useState("");
   const [oratioReflection, setOratioReflection] = useState("");
@@ -18,18 +20,19 @@ export default function CompleteContent({
     );
     const storedOratioReflection = localStorage.getItem("oratioReflection");
 
-    if (storedLectioReflection) {
+    if (
+      storedLectioReflection &&
+      storedMeditatioReflection &&
+      storedOratioReflection
+    ) {
       setLectioReflection(storedLectioReflection);
-    }
-
-    if (storedMeditatioReflection) {
       setMeditatioReflection(storedMeditatioReflection);
-    }
-
-    if (storedOratioReflection) {
       setOratioReflection(storedOratioReflection);
+    } else {
+      router.push("/lectio-divina");
     }
-  }, []);
+  }, [router]);
+
   return (
     <div className="min-h-[calc(100vh-64px)] flex flex-col items-center justify-center bg-[#f8f5ef] px-4 py-12">
       <h1 className="text-4xl md:text-6xl font-serif font-semibold text-center mb-4">
