@@ -37,17 +37,17 @@ export default function OratioContent({
       </div>
       <div className="max-w-2xl w-full">
         <p className="text-2xl md:text-3xl font-serif mb-8 text-center text-gray-900">
-          Turn your reflection into conversation with God. Speak honestly to the
-          Lord.
+          Read the passage again, then turn your reflection into conversation
+          with God. Speak honestly to the Lord.
         </p>
+        {biblePassageComponent}
         <div className="rounded-2xl bg-gray-200 text-gray-800 p-4 shadow-sm flex flex-col space-y-1 mb-8">
           <p className="text-2xl md:text-3xl text-center font-serif leading-relaxed font-medium italic">
             &quot;{meditatioReflection}&quot;
           </p>
         </div>
-        {biblePassageComponent}
         <label className="block font-bold text-xl md:text-2xl mb-4 text-center text-gray-900">
-          What would you like to say to God in response to this passage?
+          How is God inviting you to respond?
         </label>
         <textarea
           className="w-full border border-gray-400 rounded-md px-4 py-3 mb-8 text-lg focus:outline-none focus:ring-2 focus:ring-amber-800 bg-white"
