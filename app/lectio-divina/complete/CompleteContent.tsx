@@ -45,14 +45,14 @@ export default function CompleteContent({
         <br />
         Journey Today
       </h1>
-      <p className="max-w-2xl text-xl md:text-2xl font-serif text-center mb-12 mt-2 text-gray-900">
+      <p className="max-w-2xl text-xl md:text-2xl font-serif md:text-center mb-12 mt-2 text-gray-900">
         These are the words that spoke to your heart, the reflections they
         stirred within you, and the prayer you offered to God. May they remain
         with you as you go.
       </p>
       {biblePassageComponent}
-      <div className="w-full max-w-2xl flex flex-col items-center gap-10">
-        <div className="text-center">
+      <div className="w-full max-w-2xl flex flex-col md:text-center gap-10">
+        <div>
           <h2 className="text-3xl md:text-4xl font-serif font-bold mb-2">
             Lectio
           </h2>
@@ -60,7 +60,7 @@ export default function CompleteContent({
             &quot;{lectioReflection}&quot;
           </p>
         </div>
-        <div className="text-center">
+        <div>
           <h2 className="text-3xl md:text-4xl font-serif font-bold mb-2">
             Meditatio
           </h2>
@@ -68,7 +68,7 @@ export default function CompleteContent({
             &quot;{meditatioReflection}&quot;
           </p>
         </div>
-        <div className="text-center">
+        <div>
           <h2 className="text-3xl md:text-4xl font-serif font-bold mb-2">
             Oratio
           </h2>

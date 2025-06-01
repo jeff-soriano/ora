@@ -31,7 +31,7 @@ export default function LectioContent({
         Reading
       </div>
       <div className="max-w-2xl w-full">
-        <p className="text-2xl md:text-3xl font-serif mb-8 text-center text-gray-900">
+        <p className="text-2xl md:text-3xl md:text-center font-serif mb-8 text-gray-900">
           Read the passage slowly and reflect on its meaning.
         </p>
         {biblePassageComponent}

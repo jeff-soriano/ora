@@ -44,7 +44,7 @@ export default function OratioContent({
         Prayer
       </div>
       <div className="max-w-2xl w-full">
-        <p className="text-2xl md:text-3xl text-center font-serif mb-8 text-gray-900">
+        <p className="text-2xl md:text-3xl md:text-center font-serif mb-8 text-gray-900">
           Read the passage again, then turn your reflection into conversation
           with God. Speak honestly to the Lord.
         </p>

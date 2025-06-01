@@ -41,7 +41,7 @@ export default function MeditatioContent({
         Meditation
       </div>
       <div className="max-w-2xl w-full">
-        <p className="text-2xl md:text-3xl text-center font-serif mb-8 text-gray-900">
+        <p className="text-2xl md:text-3xl md:text-center font-serif mb-8 text-gray-900">
           Re-read the passage, then ponder the words you received in Lectio.
           Contemplate how they apply to your life.
         </p>
