@@ -31,9 +31,9 @@ export default function ContemplatioStep() {
         <div className="flex justify-center">
           <button
             onClick={handleNextStep}
-            className="bg-black text-white text-lg md:text-xl px-12 py-4 rounded-md hover:bg-gray-900 transition-colors font-semibold shadow-md hover:cursor-pointer"
+            className="bg-black text-white md:text-xl px-12 py-4 rounded-md hover:bg-gray-900 transition-colors font-semibold shadow-md hover:cursor-pointer"
           >
-            Amen - Complete My Prayer
+            Complete My Prayer
           </button>
         </div>
       </div>
