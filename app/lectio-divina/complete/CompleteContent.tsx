@@ -1,6 +1,10 @@
 "use client";
 
-export default function CompleteContent() {
+export default function CompleteContent({
+  biblePassageComponent,
+}: {
+  biblePassageComponent: React.ReactNode;
+}) {
   return (
     <div className="min-h-[calc(100vh-64px)] flex flex-col items-center justify-center bg-[#f8f5ef] px-4 py-12">
       <h1 className="text-4xl md:text-6xl font-serif font-semibold text-center mb-4">
@@ -13,6 +17,7 @@ export default function CompleteContent() {
         stirred within you, and the prayer you offered to God. May they remain
         with you as you go.
       </p>
+      {biblePassageComponent}
       <div className="w-full max-w-2xl flex flex-col items-center gap-10">
         <div className="text-center">
           <h2 className="text-3xl md:text-4xl font-serif font-bold mb-2">
