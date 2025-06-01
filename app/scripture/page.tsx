@@ -1,6 +1,7 @@
 import { cache } from "react";
 import OpenAI from "openai";
 import BiblePassage from "@/components/BiblePassage";
+import AIReflectionBlock from "@/components/AIReflectionBlock";
 import { fetchBibleVerse } from "@/lib/openai";
 
 const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
@@ -18,29 +19,6 @@ const getBibleVerseReflection = cache(async (bibleVerse: string) => {
   return response.output_text;
 });
 
-function BibleVerseReflection({
-  bibleVerseReflection,
-}: {
-  bibleVerseReflection: string;
-}) {
-  return (
-    <div className="max-w-2xl mx-auto mt-6 animate-fade-in">
-      <div className="rounded-2xl bg-gray-100 text-gray-900 p-6 md:p-8 shadow-sm flex flex-col space-y-1">
-        <div className="flex items-start">
-          <span className="text-2xl text-gray-400 mr-2 font-serif">
-            &ldquo;
-          </span>
-          <span className="text-lg md:text-xl">{bibleVerseReflection}</span>
-        </div>
-        <div className="flex justify-end items-end w-full space-x-2">
-          <span className="text-xs text-gray-500 font-medium">AI</span>
-          <span className="text-2xl text-gray-400 font-serif">&rdquo;</span>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 export default async function ScripturePage() {
   const today = new Date().toISOString().split("T")[0]; // YYYY-MM-DD
   const bibleVerse = await getBibleVerse(today);
@@ -57,7 +35,7 @@ export default async function ScripturePage() {
       <BiblePassage />
 
       {/* AI Reflection Block */}
-      <BibleVerseReflection bibleVerseReflection={bibleVerseReflection} />
+      <AIReflectionBlock aiReflection={bibleVerseReflection} />
     </div>
   );
 }
