@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import { useState, useEffect } from "react";
 
 export default function OratioContent({
   biblePassageComponent,
@@ -8,8 +9,21 @@ export default function OratioContent({
   biblePassageComponent: React.ReactNode;
 }) {
   const router = useRouter();
+  const [oratioReflection, setOratioReflection] = useState("");
+  const [meditatioReflection, setMeditatioReflection] = useState("");
+
+  useEffect(() => {
+    const storedMeditatioReflection = localStorage.getItem(
+      "meditatioReflection"
+    );
+
+    if (storedMeditatioReflection) {
+      setMeditatioReflection(storedMeditatioReflection);
+    }
+  }, []);
 
   const handleNextStep = () => {
+    localStorage.setItem("oratioReflection", oratioReflection);
     router.push("/lectio-divina/contemplatio");
   };
 
@@ -26,14 +40,20 @@ export default function OratioContent({
           Turn your reflection into conversation with God. Speak honestly to the
           Lord.
         </p>
-        <p className="text-3xl md:text-4xl text-center font-serif leading-relaxed mb-8 font-medium">
-          &quot;heirs of God&quot;
-        </p>
+        <div className="rounded-2xl bg-gray-200 text-gray-800 p-4 shadow-sm flex flex-col space-y-1 mb-8">
+          <p className="text-2xl md:text-3xl text-center font-serif leading-relaxed font-medium italic">
+            &quot;{meditatioReflection}&quot;
+          </p>
+        </div>
         {biblePassageComponent}
         <label className="block font-bold text-xl md:text-2xl mb-4 text-center text-gray-900">
           What would you like to say to God in response to this passage?
         </label>
-        <textarea className="w-full border border-gray-400 rounded-md px-4 py-3 mb-8 text-lg focus:outline-none focus:ring-2 focus:ring-amber-800 bg-white" />
+        <textarea
+          className="w-full border border-gray-400 rounded-md px-4 py-3 mb-8 text-lg focus:outline-none focus:ring-2 focus:ring-amber-800 bg-white"
+          value={oratioReflection}
+          onChange={(e) => setOratioReflection(e.target.value)}
+        />
         <div className="flex justify-center">
           <button
             onClick={handleNextStep}
