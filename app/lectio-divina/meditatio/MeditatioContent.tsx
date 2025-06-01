@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import LoadingPage from "@/components/LoadingPage";
+import ReflectionBlock from "@/components/ReflectionBlock";
 
 export default function MeditatioContent({
   biblePassageComponent,
@@ -40,16 +41,12 @@ export default function MeditatioContent({
         Meditation
       </div>
       <div className="max-w-2xl w-full">
-        <p className="text-2xl md:text-3xl font-serif mb-8 text-center text-gray-900">
+        <p className="text-2xl md:text-3xl text-center font-serif mb-8 text-gray-900">
           Re-read the passage, then ponder the words you received in Lectio.
           Contemplate how they apply to your life.
         </p>
         {biblePassageComponent}
-        <div className="rounded-2xl bg-gray-200 text-gray-800 p-4 shadow-sm flex flex-col space-y-1 mb-8">
-          <p className="text-2xl md:text-3xl text-center font-serif leading-relaxed font-medium italic">
-            &quot;{lectioReflection}&quot;
-          </p>
-        </div>
+        <ReflectionBlock reflection={lectioReflection} />
         <label className="block font-bold text-xl md:text-2xl mb-4 text-center text-gray-900">
           What is God saying to you through these words?
         </label>
@@ -63,7 +60,7 @@ export default function MeditatioContent({
             onClick={handleNextStep}
             className="bg-black text-white text-lg md:text-xl px-12 py-4 rounded-md hover:bg-gray-900 transition-colors font-semibold shadow-md hover:cursor-pointer"
           >
-            NEXT STEP
+            Next Step
           </button>
         </div>
       </div>
