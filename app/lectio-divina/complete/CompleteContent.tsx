@@ -1,10 +1,35 @@
 "use client";
 
+import { useState, useEffect } from "react";
+
 export default function CompleteContent({
   biblePassageComponent,
 }: {
   biblePassageComponent: React.ReactNode;
 }) {
+  const [lectioReflection, setLectioReflection] = useState("");
+  const [meditatioReflection, setMeditatioReflection] = useState("");
+  const [oratioReflection, setOratioReflection] = useState("");
+
+  useEffect(() => {
+    const storedLectioReflection = localStorage.getItem("lectioReflection");
+    const storedMeditatioReflection = localStorage.getItem(
+      "meditatioReflection"
+    );
+    const storedOratioReflection = localStorage.getItem("oratioReflection");
+
+    if (storedLectioReflection) {
+      setLectioReflection(storedLectioReflection);
+    }
+
+    if (storedMeditatioReflection) {
+      setMeditatioReflection(storedMeditatioReflection);
+    }
+
+    if (storedOratioReflection) {
+      setOratioReflection(storedOratioReflection);
+    }
+  }, []);
   return (
     <div className="min-h-[calc(100vh-64px)] flex flex-col items-center justify-center bg-[#f8f5ef] px-4 py-12">
       <h1 className="text-4xl md:text-6xl font-serif font-semibold text-center mb-4">
@@ -24,7 +49,7 @@ export default function CompleteContent({
             Lectio
           </h2>
           <p className="text-2xl md:text-2xl font-serif mb-2">
-            &quot;the light, life, shines in the darkness&quot;
+            &quot;{lectioReflection}&quot;
           </p>
         </div>
         <div className="text-center">
@@ -32,8 +57,7 @@ export default function CompleteContent({
             Meditatio
           </h2>
           <p className="text-2xl md:text-2xl font-serif mb-2">
-            God&apos;s light always shines, offering hope and courage in even
-            the darkest moments.
+            &quot;{meditatioReflection}&quot;
           </p>
         </div>
         <div className="text-center">
@@ -41,8 +65,7 @@ export default function CompleteContent({
             Oratio
           </h2>
           <p className="text-2xl md:text-2xl font-serif">
-            Thank You, Lord, for being my light and my salvation. Help me see
-            Your light when I feel surrounded by darkness.
+            &quot;{oratioReflection}&quot;
           </p>
         </div>
       </div>
