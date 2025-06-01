@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
+import LoadingPage from "@/components/LoadingPage";
 
 export default function MeditatioContent({
   biblePassageComponent,
@@ -25,6 +26,10 @@ export default function MeditatioContent({
     localStorage.setItem("meditatioReflection", meditatioReflection);
     router.push("/lectio-divina/oratio");
   };
+
+  if (!lectioReflection) {
+    return <LoadingPage />;
+  }
 
   return (
     <div className="min-h-[calc(100vh-64px)] flex flex-col items-center justify-center bg-[#f8f5ef] px-4 py-8">

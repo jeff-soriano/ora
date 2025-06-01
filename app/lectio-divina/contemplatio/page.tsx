@@ -1,10 +1,12 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import LoadingPage from "@/components/LoadingPage";
 
 export default function ContemplatioStep() {
   const router = useRouter();
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const storedLectioReflection = localStorage.getItem("lectioReflection");
@@ -19,12 +21,18 @@ export default function ContemplatioStep() {
       !storedOratioReflection
     ) {
       router.push("/lectio-divina");
+    } else {
+      setIsLoading(false);
     }
   }, [router]);
 
   const handleNextStep = () => {
     router.push("/lectio-divina/complete");
   };
+
+  if (isLoading) {
+    return <LoadingPage />;
+  }
 
   return (
     <div className="min-h-[calc(100vh-64px)] flex flex-col items-center justify-center bg-[#f8f5ef] px-4 py-8">
