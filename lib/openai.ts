@@ -21,7 +21,7 @@ export const fetchBibleVerse = async () => {
   verse = response.output_text;
 
   await redis.set(`bibleVerse:${today}`, verse, {
-    ex: timeUntilMidnight(),
+    ex: getSecondsUntilMidnight(),
   });
 
   return verse as string;
@@ -37,7 +37,7 @@ export const fetchBibleVerseCitation = async (bibleVerse: string) => {
     input: `Given the following passage from the Bible, return the citation of the passage. Use the Revised Standard Version 2nd Catholic Edition(RSV) of the Bible. Only return the citation, no other text.\n${bibleVerse}`,
   });
   citation = response.output_text;
-  await redis.set(cacheKey, citation, { ex: timeUntilMidnight() });
+  await redis.set(cacheKey, citation, { ex: getSecondsUntilMidnight() });
   return citation as string;
 };
 
@@ -51,7 +51,7 @@ export const fetchBibleVerseReflection = async (bibleVerse: string) => {
     input: `You are a warm, trusted, Christian spiritual counselor. Write 2–3 sentences of gentle, pastoral reflection that invites the reader into contemplative prayer based on the following passage from the Bible, ending with a question that is fruitful for spiritual reflection:\n${bibleVerse}`,
   });
   reflection = response.output_text;
-  await redis.set(cacheKey, reflection, { ex: timeUntilMidnight() });
+  await redis.set(cacheKey, reflection, { ex: getSecondsUntilMidnight() });
   return reflection as string;
 };
 
@@ -72,9 +72,9 @@ export const generateLectioDivinaInsight = async (
   return response.output_text;
 };
 
-const timeUntilMidnight = () => {
+const getSecondsUntilMidnight = () => {
   const now = new Date();
   const tomorrow = new Date(now);
-  tomorrow.setUTCHours(24, 0, 0, 0); // next midnight UTC
+  tomorrow.setHours(24, 0, 0, 0);
   return Math.floor((tomorrow.getTime() - now.getTime()) / 1000);
 };
