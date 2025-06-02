@@ -19,7 +19,11 @@ export const fetchBibleVerse = async () => {
     input: `Today is ${today}. Choose a passage from the Bible that is in line with today's Catholic lectionary reading and is fruitful for spiritual reflection. The passage should be 3-4 verses long. Use the Revised Standard Version 2nd Catholic Edition(RSV) of the Bible. Only return the passage, no other text. Do not return the citation of the passage, just the text of the passage. Do not add quotation marks to the passage.`,
   });
   verse = response.output_text;
-  await redis.set(`bibleVerse:${today}`, verse, { ex: 86400 }); // expire in 1 day
+
+  await redis.set(`bibleVerse:${today}`, verse, {
+    ex: timeUntilMidnight(),
+  });
+
   return verse as string;
 };
 
@@ -33,7 +37,7 @@ export const fetchBibleVerseCitation = async (bibleVerse: string) => {
     input: `Given the following passage from the Bible, return the citation of the passage. Use the Revised Standard Version 2nd Catholic Edition(RSV) of the Bible. Only return the citation, no other text.\n${bibleVerse}`,
   });
   citation = response.output_text;
-  await redis.set(cacheKey, citation, { ex: 86400 }); // expire in 1 day
+  await redis.set(cacheKey, citation, { ex: timeUntilMidnight() });
   return citation as string;
 };
 
@@ -47,7 +51,7 @@ export const fetchBibleVerseReflection = async (bibleVerse: string) => {
     input: `You are a warm, trusted, Christian spiritual counselor. Write 2–3 sentences of gentle, pastoral reflection that invites the reader into contemplative prayer based on the following passage from the Bible, ending with a question that is fruitful for spiritual reflection:\n${bibleVerse}`,
   });
   reflection = response.output_text;
-  await redis.set(cacheKey, reflection, { ex: 86400 }); // expire in 1 day
+  await redis.set(cacheKey, reflection, { ex: timeUntilMidnight() });
   return reflection as string;
 };
 
@@ -66,4 +70,11 @@ export const generateLectioDivinaInsight = async (
     Oratio reflection: ${oratioReflection}`,
   });
   return response.output_text;
+};
+
+const timeUntilMidnight = () => {
+  const now = new Date();
+  const tomorrow = new Date(now);
+  tomorrow.setUTCHours(24, 0, 0, 0); // next midnight UTC
+  return Math.floor((tomorrow.getTime() - now.getTime()) / 1000);
 };
