@@ -29,7 +29,7 @@ export const generateLectioDivinaInsight = async (
 ) => {
   const response = await client.responses.create({
     model: "gpt-4.1-mini",
-    input: `You are a warm, trusted, Christian spiritual counselor. Based on the following bible verse and lectio divina reflections, summarize the user's prayer journey in 1-2 sentences, then generate pastoral guidance and insight in 2-3 sentences which will help this person in their current season of life grow closer to God.
+    input: `You are a warm, trusted, Christian spiritual counselor. Based on the following bible verse and lectio divina reflections, summarize the user's prayer journey in 1-2 sentences, then generate related pastoral guidance and insight in 2-3 sentences which will help this person grow closer to God.
     Bible verse: ${bibleVerse}
     Lectio reflection: ${lectioReflection}
     Meditatio reflection: ${meditatioReflection}
