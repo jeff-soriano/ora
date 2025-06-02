@@ -1,9 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import getBibleVerse from "@/lib/getBibleVerse";
 import LoadingIcon from "@/components/LoadingIcon";
-import { generateLectioDivinaInsight } from "@/lib/openai";
+import { generateLectioDivinaInsight, fetchBibleVerse } from "@/lib/openai";
 import AIReflectionBlock from "@/components/AIReflectionBlock";
 
 export default function GenerateAIInsight({
@@ -17,12 +16,11 @@ export default function GenerateAIInsight({
 }) {
   const [aiInsight, setAiInsight] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const today = new Date().toISOString().split("T")[0]; // YYYY-MM-DD
 
   const handleClick = async () => {
     setIsLoading(true);
 
-    const bibleVerse = await getBibleVerse(today);
+    const bibleVerse = await fetchBibleVerse();
     const aiInsight = await generateLectioDivinaInsight(
       bibleVerse,
       lectioReflection,
