@@ -1,14 +1,8 @@
-import { cache } from "react";
 import { fetchBibleVerseCitation, fetchBibleVerse } from "@/lib/openai";
-
-const getBibleVerseCitation = cache(async (bibleVerse: string) => {
-  return await fetchBibleVerseCitation(bibleVerse);
-});
 
 export default async function BiblePassage() {
   const bibleVerse = await fetchBibleVerse();
-  console.log("bibleVerse", bibleVerse);
-  const bibleVerseCitation = await getBibleVerseCitation(bibleVerse);
+  const bibleVerseCitation = await fetchBibleVerseCitation(bibleVerse);
 
   return (
     <div className="max-w-2xl mx-auto mb-6 animate-fade-in">
