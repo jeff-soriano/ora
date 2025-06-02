@@ -15,6 +15,7 @@ export default function LectioContent({
     localStorage.removeItem("lectioReflection");
     localStorage.removeItem("meditatioReflection");
     localStorage.removeItem("oratioReflection");
+    localStorage.removeItem("aiInsight");
   }, []);
 
   const handleNextStep = () => {

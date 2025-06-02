@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import LoadingIcon from "@/components/LoadingIcon";
 import { generateLectioDivinaInsight, fetchBibleVerse } from "@/lib/openai";
 import AIReflectionBlock from "@/components/AIReflectionBlock";
@@ -17,6 +17,13 @@ export default function GenerateAIInsight({
   const [aiInsight, setAiInsight] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
+  useEffect(() => {
+    const storedAiInsight = localStorage.getItem("aiInsight");
+    if (storedAiInsight) {
+      setAiInsight(storedAiInsight);
+    }
+  }, []);
+
   const handleClick = async () => {
     setIsLoading(true);
 
@@ -30,6 +37,7 @@ export default function GenerateAIInsight({
 
     setAiInsight(aiInsight);
     setIsLoading(false);
+    localStorage.setItem("aiInsight", aiInsight);
   };
 
   if (isLoading) {
