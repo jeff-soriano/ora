@@ -14,7 +14,8 @@ const getBibleVerseCitation = cache(async (bibleVerse: string) => {
 });
 
 export default async function BiblePassage() {
-  const bibleVerse = await getBibleVerse();
+  const today = new Date().toISOString().split("T")[0]; // YYYY-MM-DD
+  const bibleVerse = await getBibleVerse(today);
   console.log("bibleVerse", bibleVerse);
   const bibleVerseCitation = await getBibleVerseCitation(bibleVerse);
 
