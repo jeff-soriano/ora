@@ -10,40 +10,34 @@ export default function JournalLayout({
   const router = useRouter();
   const pathname = usePathname();
   const isToday = pathname === "/journal";
-  const selectedClassnames =
-    "font-semibold bg-white text-black rounded-full focus:outline-none shadow-sm";
-  const unselectedClassnames = "text-gray-700 focus:outline-none";
 
-  const handleClick = () => {
-    if (isToday) {
-      router.push("/journal/past");
-    } else {
-      router.push("/journal");
-    }
-  };
+  const buttonClassnames =
+    "flex-1 px-3 md:px-6 py-2 text-base md:text-lg font-semibold border-b focus:outline-none transition-colors cursor-pointer";
+  const selectedClassnames = "text-black border-black";
+  const unselectedClassnames =
+    "bg-transparent text-gray-500 hover:border-black hover:text-black";
 
   return (
-    <div className="min-h-screen flex flex-col items-center px-4 py-8 bg-[#f8f5ef]">
+    <div className="min-h-screen flex flex-col items-center px-2 md:px-4 py-8 bg-[#f8f5ef]">
       {/* Tab Switcher */}
-      <button
-        onClick={handleClick}
-        className="flex mb-8 mt-2 rounded-full bg-[#f5f3ee] overflow-hidden border border-[#e5e2da] cursor-pointer"
-      >
-        <div
-          className={`px-6 py-2 text-lg ${
+      <div className="flex mb-8 mt-2 bg-[#f5f3ee] overflow-hidden w-full max-w-md h-12">
+        <button
+          className={`${buttonClassnames} ${
             isToday ? selectedClassnames : unselectedClassnames
           }`}
+          onClick={() => router.push("/journal")}
         >
           Today's Entry
-        </div>
-        <div
-          className={`px-6 py-2 text-lg ${
-            isToday ? unselectedClassnames : selectedClassnames
-          }`}
+        </button>
+        <button
+          className={`${buttonClassnames}
+            ${!isToday ? selectedClassnames : unselectedClassnames}
+          `}
+          onClick={() => router.push("/journal/past")}
         >
           View Past Entries
-        </div>
-      </button>
+        </button>
+      </div>
       {children}
     </div>
   );
