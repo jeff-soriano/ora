@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 
 import { FaRegCalendarAlt } from "react-icons/fa";
 import JournalEntriesHeader from "./JournalEntriesHeader";
+import LoadingPage from "@/components/LoadingPage";
 
 interface JournalEntry {
   date: string;
@@ -37,11 +38,17 @@ function getAllJournalEntries(): JournalEntry[] {
 
 export default function PastJournalPage() {
   const [entries, setEntries] = useState<JournalEntry[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
 
   useEffect(() => {
     setEntries(getAllJournalEntries());
+    setIsLoading(false);
   }, []);
+
+  if (isLoading) {
+    return <LoadingPage />;
+  }
 
   if (entries.length === 0) {
     return (
