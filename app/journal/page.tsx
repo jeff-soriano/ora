@@ -41,7 +41,7 @@ export default function JournalPage() {
     debounceRef.current = setTimeout(() => {
       localStorage.setItem(`journal-${today}`, e.target.value);
       setStatus("Saved \u2713");
-    }, 1000); // 1 second debounce
+    }, 2000); // 2 second debounce
   }
 
   return (
@@ -70,9 +70,19 @@ export default function JournalPage() {
         placeholder="Write your journal entry here..."
       />
       {/* Saved Status */}
-      <div className="text-lg font-sans text-center mb-2">{status}</div>
+      <div className="text-lg font-sans text-center mb-2 min-h-[1.5em]">
+        <span
+          className={
+            status
+              ? "opacity-100 transition-opacity"
+              : "opacity-0 transition-opacity"
+          }
+        >
+          {status}
+        </span>
+      </div>
       <div className="text-lg font-sans text-center text-gray-700">
-        Your journal is saved privately on this device.
+        Your journal saves automatically and is saved privately on this device.
       </div>
     </div>
   );
