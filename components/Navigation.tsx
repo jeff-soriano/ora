@@ -7,7 +7,7 @@ export default function Navigation() {
   const pathname = usePathname();
 
   const isActive = (path: string) => {
-    return pathname === path ? "border-black" : "border-transparent";
+    return pathname.includes(path) ? "border-black" : "border-transparent";
   };
 
   const navLinkClass =
