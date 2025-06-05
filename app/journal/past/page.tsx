@@ -7,17 +7,13 @@ export default function PastJournalPage() {
   return (
     <div className="flex flex-col items-center justify-center w-full h-full">
       <h1 className="text-4xl md:text-5xl font-serif text-center mb-2">
-        Your Journal
-        <br />
-        Entries
+        Your Journal Entries
       </h1>
       <div className="text-xl md:text-2xl font-sans text-center mb-8">
         Return to what the Lord has shown you.
       </div>
       <div className="text-2xl md:text-3xl font-serif text-center mb-2">
-        You haven't recorded
-        <br />
-        any journal entries yet.
+        You haven't recorded any journal entries yet.
       </div>
       <div className="text-lg md:text-xl font-sans text-center mb-8">
         Begin today and see what the Lord speaks to your heart.

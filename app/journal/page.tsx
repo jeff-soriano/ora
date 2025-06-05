@@ -48,9 +48,7 @@ export default function JournalPage() {
     <>
       {/* Heading */}
       <h1 className="text-4xl md:text-5xl font-serif text-center mb-4">
-        Your Journal for
-        <br />
-        {today}
+        Your Journal for {today}
       </h1>
       {/* Prompt */}
       <div className="text-xl md:text-2xl font-sans text-center mb-6">
