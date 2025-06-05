@@ -7,7 +7,7 @@ export default async function ScripturePage() {
   const bibleVerseReflection = await fetchBibleVerseReflection(bibleVerse);
 
   return (
-    <div className="min-h-screen flex flex-col items-center px-6 py-12 md:py-20 bg-background">
+    <div className="bg-[#f8f5ef] min-h-screen flex flex-col items-center px-6 py-12 md:py-20">
       {/* Title */}
       <h1 className="text-3xl md:text-4xl font-serif mb-8">
         Today&rsquo;s Scripture
