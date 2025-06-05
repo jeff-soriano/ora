@@ -5,7 +5,7 @@ import LoadingIcon from "@/components/LoadingIcon";
 import { generateLectioDivinaInsight, fetchBibleVerse } from "@/lib/openai";
 import AIReflectionBlock from "@/components/AIReflectionBlock";
 
-export default function GenerateAIInsight({
+export default function GenerateLectioDivinaInsight({
   lectioReflection,
   meditatioReflection,
   oratioReflection,
