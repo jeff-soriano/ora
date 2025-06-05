@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+
 import { FaRegCalendarAlt } from "react-icons/fa";
 import JournalEntriesHeader from "./JournalEntriesHeader";
 
@@ -35,6 +37,7 @@ function getAllJournalEntries(): JournalEntry[] {
 
 export default function PastJournalPage() {
   const [entries, setEntries] = useState<JournalEntry[]>([]);
+  const router = useRouter();
 
   useEffect(() => {
     setEntries(getAllJournalEntries());
@@ -71,9 +74,7 @@ export default function PastJournalPage() {
             key={entry.date}
             className="rounded-2xl border border-[#e5e2da] bg-white px-6 py-4 shadow-sm text-left cursor-pointer transition hover:bg-gray-50"
             onClick={() =>
-              (window.location.href = `/journal/past/${encodeURIComponent(
-                entry.date
-              )}`)
+              router.push(`/journal/past/${encodeURIComponent(entry.date)}`)
             }
           >
             <div className="flex items-center gap-2 mb-1">
