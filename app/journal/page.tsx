@@ -12,14 +12,27 @@ function getTodayString() {
 
 export default function JournalPage() {
   const today = getTodayString();
+  const [title, setTitle] = useState("");
   const [entry, setEntry] = useState("");
   const [status, setStatus] = useState("");
   const debounceRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
-    const saved = localStorage.getItem(`journal-${today}`) || "";
-    setEntry(saved);
+    const savedTitle = localStorage.getItem(`journal-title-${today}`) || "";
+    setTitle(savedTitle);
+    const savedEntry = localStorage.getItem(`journal-${today}`) || "";
+    setEntry(savedEntry);
   }, [today]);
+
+  function handleTitleChange(e: React.ChangeEvent<HTMLInputElement>) {
+    setTitle(e.target.value);
+    setStatus("");
+    if (debounceRef.current) clearTimeout(debounceRef.current);
+    debounceRef.current = setTimeout(() => {
+      localStorage.setItem(`journal-title-${today}`, e.target.value);
+      setStatus("Saved \u2713");
+    }, 1000);
+  }
 
   function handleChange(e: React.ChangeEvent<HTMLTextAreaElement>) {
     setEntry(e.target.value);
@@ -52,6 +65,14 @@ export default function JournalPage() {
       <div className="text-xl md:text-2xl font-sans text-center mb-6">
         What would you like to share with God today?
       </div>
+      {/* Title Input */}
+      <input
+        className="w-full max-w-3xl rounded-2xl border border-[#e5e2da] bg-transparent p-4 text-lg md:text-xl font-sans mb-4 focus:outline-none focus:ring-2 focus:ring-amber-800"
+        type="text"
+        value={title}
+        onChange={handleTitleChange}
+        placeholder="Title (optional)"
+      />
       {/* Textarea */}
       <textarea
         className="w-full max-w-3xl h-64 md:h-80 rounded-2xl border border-[#e5e2da] bg-transparent p-6 text-lg md:text-xl font-sans mb-6 resize-none focus:outline-none focus:ring-2 focus:ring-amber-800"
