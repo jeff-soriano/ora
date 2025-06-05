@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { FaRegCalendarAlt } from "react-icons/fa";
+import JournalEntriesHeader from "./JournalEntriesHeader";
 
 interface JournalEntry {
   date: string;
@@ -42,14 +43,7 @@ export default function PastJournalPage() {
   if (entries.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center w-full h-full">
-        <h1 className="text-4xl md:text-5xl font-serif text-center mb-2">
-          Your Journal
-          <br />
-          Entries
-        </h1>
-        <div className="text-xl md:text-2xl font-sans text-center mb-8">
-          Return to what the Lord has shown you.
-        </div>
+        <JournalEntriesHeader />
         <div className="text-2xl md:text-3xl font-serif text-center mb-2">
           You haven't recorded
           <br />
@@ -70,14 +64,7 @@ export default function PastJournalPage() {
 
   return (
     <div className="flex flex-col items-center w-full h-full">
-      <h1 className="text-4xl md:text-5xl font-serif text-center mb-2">
-        Your Journal
-        <br />
-        Entries
-      </h1>
-      <div className="text-xl md:text-2xl font-sans text-center mb-8">
-        Return to what the Lord has shown you.
-      </div>
+      <JournalEntriesHeader />
       <div className="flex flex-col gap-4 w-full max-w-2xl">
         {entries.map((entry) => (
           <div
