@@ -18,7 +18,7 @@ export default function PastJournalEntryPage() {
   }, [date]);
 
   return (
-    <div className="flex flex-col items-center w-full max-w-2xl h-full px-2 md:px-0">
+    <div className="flex flex-col items-center w-full max-w-2xl h-full px-2 md:px-0 animate-fade-in">
       <h1 className="text-4xl md:text-5xl font-serif text-center mb-2 font-medium">
         Your Entry from
         <br />

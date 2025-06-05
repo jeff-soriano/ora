@@ -45,7 +45,7 @@ export default function JournalPage() {
   }
 
   return (
-    <>
+    <div className="animate-fade-in">
       {/* Heading */}
       <h1 className="text-4xl md:text-5xl font-serif text-center mb-4">
         Your Journal for {today}
@@ -74,6 +74,6 @@ export default function JournalPage() {
       <div className="text-lg font-sans text-center text-gray-700">
         Your journal is saved privately on this device.
       </div>
-    </>
+    </div>
   );
 }

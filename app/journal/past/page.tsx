@@ -66,7 +66,7 @@ export default function PastJournalPage() {
   }
 
   return (
-    <div className="flex flex-col items-center w-full h-full">
+    <div className="flex flex-col items-center w-full h-full animate-fade-in">
       <JournalEntriesHeader />
       <div className="flex flex-col gap-4 w-full max-w-2xl">
         {entries.map((entry) => (
