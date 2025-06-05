@@ -37,11 +37,19 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 ## Dev Journal
 
+### June 4, 2025
+
+- Initial implementation of journal feature
+- Dark mode toggle, responsive navbar. Add tests
+- QUESTIONS: Is there a way to have the user select the words in the passage by clicking on them in the Lectio step?
+
+### June 2, 2025
+
+- Redis key fixes so that it restarts every day
+
 ### June 1, 2025
 
 - Use redis to cache scripture passages and other things
-- Dark mode toggle, responsive navbar. Add tests
-- QUESTIONS: Is there a way to have the user select the words in the passage by clicking on them in the Lectio step?
 
 ### May 31, 2025
 
