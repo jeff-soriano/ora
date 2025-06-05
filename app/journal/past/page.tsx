@@ -67,9 +67,14 @@ export default function PastJournalPage() {
       <JournalEntriesHeader />
       <div className="flex flex-col gap-4 w-full max-w-2xl">
         {entries.map((entry) => (
-          <div
+          <button
             key={entry.date}
-            className="rounded-2xl border border-[#e5e2da] bg-white px-6 py-4 shadow-sm"
+            className="rounded-2xl border border-[#e5e2da] bg-white px-6 py-4 shadow-sm text-left cursor-pointer transition hover:bg-gray-50"
+            onClick={() =>
+              (window.location.href = `/journal/past/${encodeURIComponent(
+                entry.date
+              )}`)
+            }
           >
             <div className="flex items-center gap-2 mb-1">
               <FaRegCalendarAlt className="text-xl text-gray-500" />
@@ -80,7 +85,7 @@ export default function PastJournalPage() {
             <div className="text-lg md:text-xl font-sans text-gray-800 truncate">
               {entry.title || entry.entry.split("\n")[0]}
             </div>
-          </div>
+          </button>
         ))}
       </div>
     </div>
