@@ -1,5 +1,6 @@
 "use client";
-import { useState, useEffect } from "react";
+
+import { useState, useEffect, useRef } from "react";
 
 function getTodayString() {
   return new Date().toLocaleDateString(undefined, {
@@ -12,7 +13,8 @@ function getTodayString() {
 export default function JournalPage() {
   const today = getTodayString();
   const [entry, setEntry] = useState("");
-  const [status, setStatus] = useState("Saved");
+  const [status, setStatus] = useState("");
+  const debounceRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     const saved = localStorage.getItem(`journal-${today}`) || "";
@@ -21,8 +23,12 @@ export default function JournalPage() {
 
   function handleChange(e: React.ChangeEvent<HTMLTextAreaElement>) {
     setEntry(e.target.value);
-    localStorage.setItem(`journal-${today}`, e.target.value);
-    setStatus("Saved");
+    setStatus("");
+    if (debounceRef.current) clearTimeout(debounceRef.current);
+    debounceRef.current = setTimeout(() => {
+      localStorage.setItem(`journal-${today}`, e.target.value);
+      setStatus("Saved \u2713");
+    }, 1000); // 1 second debounce
   }
 
   return (
