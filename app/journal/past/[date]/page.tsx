@@ -2,6 +2,7 @@
 
 import { useRouter, useParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import GenerateJournalEntryInsight from "./GenerateJournalEntryInsight";
 
 export default function PastJournalEntryPage() {
   const router = useRouter();
@@ -41,7 +42,10 @@ export default function PastJournalEntryPage() {
           )}
         </div>
       </div>
-      <div className="text-lg font-sans text-center text-gray-700">
+      {entry && (
+        <GenerateJournalEntryInsight journalEntry={entry} date={date} />
+      )}
+      <div className="text-lg font-sans text-center text-gray-700 mt-4">
         This entry is private and saved only
         <br />
         on this device.

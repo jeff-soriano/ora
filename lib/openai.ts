@@ -72,6 +72,15 @@ export const generateLectioDivinaInsight = async (
   return response.output_text;
 };
 
+export const generateJournalEntryInsight = async (journalEntry: string) => {
+  const response = await client.responses.create({
+    model: "gpt-4.1-mini",
+    input: `You are a warm, trusted, Christian spiritual counselor. Based on the following journal entry, generate a pastoral reflection in 2-3 sentences which will help this person grow closer to God. Then offer a single verse of the Bible that is relevant to the journal entry.
+    Journal entry: ${journalEntry}`,
+  });
+  return response.output_text;
+};
+
 const getSecondsUntilMidnight = () => {
   const now = new Date();
   const tomorrow = new Date(now);
