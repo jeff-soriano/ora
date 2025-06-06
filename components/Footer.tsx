@@ -7,15 +7,15 @@ export default function Footer() {
             © {new Date().getFullYear()} Ora. All rights reserved.
           </p>
           <div className="flex space-x-6">
-            <a 
-              href="#" 
+            <a
+              href="/privacy"
               className="text-gray-400 hover:text-gray-500 dark:hover:text-gray-300"
               aria-label="Privacy Policy"
             >
               Privacy Policy
             </a>
-            <a 
-              href="#" 
+            <a
+              href="/terms"
               className="text-gray-400 hover:text-gray-500 dark:hover:text-gray-300"
               aria-label="Terms of Service"
             >
@@ -26,4 +26,4 @@ export default function Footer() {
       </div>
     </footer>
   );
-} 
+}
