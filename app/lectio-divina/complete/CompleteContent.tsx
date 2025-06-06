@@ -40,7 +40,7 @@ export default function CompleteContent({
   }
 
   return (
-    <div className="min-h-[calc(100vh-64px)] flex flex-col items-center justify-center bg-[#f8f5ef] px-4 py-12">
+    <div className="min-h-[calc(100vh-64px)] flex flex-col items-center justify-center px-4 py-12">
       <h1 className="text-4xl md:text-6xl font-serif font-semibold text-center mb-4">
         Your Prayer
         <br />

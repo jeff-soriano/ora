@@ -10,7 +10,7 @@ export default function AIInsightPrompt({
   disclaimer?: string;
 }) {
   return (
-    <div className="max-w-xl mx-auto p-6 bg-[#f8f5ef] shadow-md border border-[#f5f3ee] rounded-2xl shadow-sm">
+    <div className="max-w-xl mx-auto p-6 shadow-md border border-[#f5f3ee] rounded-2xl shadow-sm">
       <div className="flex items-center mb-2">
         <span className="text-2xl mr-1 md:mr-2">🕊️</span>
         <h2 className="text-xl md:text-3xl font-serif font-bold">{header}</h2>

@@ -18,7 +18,7 @@ export default function JournalLayout({
     "bg-transparent text-gray-500 hover:border-black hover:text-black";
 
   return (
-    <div className="min-h-screen flex flex-col items-center px-2 md:px-4 py-8 bg-[#f8f5ef]">
+    <div className="min-h-screen flex flex-col items-center px-2 md:px-4 py-8">
       {/* Tab Switcher */}
       <div className="flex mb-8 mt-2 bg-[#f5f3ee] overflow-hidden w-full max-w-md h-12">
         <button
