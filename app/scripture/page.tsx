@@ -14,7 +14,9 @@ export default async function ScripturePage() {
       </h1>
 
       {/* Scripture Block */}
-      <BiblePassage />
+      <div className="mb-6">
+        <BiblePassage />
+      </div>
 
       {/* AI Reflection Block */}
       <AIReflectionBlock aiReflection={bibleVerseReflection} />
