@@ -3,6 +3,7 @@
 import { useRouter, useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import GenerateJournalEntryInsight from "./GenerateJournalEntryInsight";
+import LoadingPage from "@/components/LoadingPage";
 
 export default function PastJournalEntryPage() {
   const router = useRouter();
@@ -10,13 +11,19 @@ export default function PastJournalEntryPage() {
   const date = decodeURIComponent(params.date as string);
   const [entry, setEntry] = useState<string | null>(null);
   const [title, setTitle] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const savedEntry = localStorage.getItem(`journal-${date}`);
     const savedTitle = localStorage.getItem(`journal-title-${date}`);
     setEntry(savedEntry);
     setTitle(savedTitle);
+    setIsLoading(false);
   }, [date]);
+
+  if (isLoading) {
+    return <LoadingPage />;
+  }
 
   return (
     <div className="flex flex-col items-center w-full max-w-2xl h-full px-2 md:px-0 animate-fade-in">
