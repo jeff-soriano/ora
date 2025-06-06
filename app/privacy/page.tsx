@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function PrivacyPage() {
   return (
     <div className="min-h-screen flex flex-col items-center px-4 py-12 bg-[#f8f5ef]">
@@ -32,14 +34,14 @@ export default function PrivacyPage() {
         <div className="text-lg md:text-xl font-sans mb-6 text-gray-900">
           The request is one-time, and OpenAI's privacy policy governs how the
           data is handled on their side.{" "}
-          <a
+          <Link
             href="https://openai.com/privacy"
             className="underline text-blue-700"
             target="_blank"
             rel="noopener noreferrer"
           >
             https://openai.com/privacy
-          </a>
+          </Link>
         </div>
         <h2 className="text-2xl font-serif font-bold mb-2">No Tracking</h2>
         <div className="text-lg md:text-xl font-sans mb-6 text-gray-900">
@@ -56,12 +58,12 @@ export default function PrivacyPage() {
         <div className="text-lg md:text-xl font-sans mb-6 text-gray-900">
           This app is built with prayerful care. If you have any questions about
           privacy, please contact the developer at:{" "}
-          <a
+          <Link
             href="mailto:soriano.jeffm@gmail.com"
             className="underline text-blue-700"
           >
             soriano.jeffm@gmail.com
-          </a>
+          </Link>
         </div>
       </div>
     </div>

@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function TermsPage() {
   return (
     <div className="min-h-screen flex flex-col items-center px-4 py-12 bg-[#f8f5ef]">
@@ -57,12 +59,12 @@ export default function TermsPage() {
         <h2 className="text-2xl font-serif font-bold mb-2">Contact</h2>
         <div className="text-lg md:text-xl font-sans mb-6 text-gray-900">
           For questions or support, email:{" "}
-          <a
+          <Link
             href="mailto:soriano.jeffm@gmail.com"
             className="underline text-blue-700"
           >
             soriano.jeffm@gmail.com
-          </a>
+          </Link>
         </div>
       </div>
     </div>
