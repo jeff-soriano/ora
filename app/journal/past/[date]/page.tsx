@@ -12,6 +12,7 @@ export default function PastJournalEntryPage() {
   const [entry, setEntry] = useState<string | null>(null);
   const [title, setTitle] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     const savedEntry = localStorage.getItem(`journal-${date}`);
@@ -20,6 +21,14 @@ export default function PastJournalEntryPage() {
     setTitle(savedTitle);
     setIsLoading(false);
   }, [date]);
+
+  function handleDelete() {
+    localStorage.removeItem(`journal-${date}`);
+    localStorage.removeItem(`journal-title-${date}`);
+    localStorage.removeItem(`journalEntryInsight-${date}`);
+    setShowModal(false);
+    router.push("/journal/past");
+  }
 
   if (isLoading) {
     return <LoadingPage />;
@@ -58,12 +67,46 @@ export default function PastJournalEntryPage() {
         on this device.
       </div>
       <button
-        className="mt-4 mb-6 text-lg font-sans text-black cursor-pointer flex items-center gap-2"
+        className="mt-4 mb-2 text-lg font-sans text-black cursor-pointer flex items-center gap-2"
         onClick={() => router.push("/journal/past")}
       >
         <span className="text-2xl">&#8592;</span>{" "}
         <span className="hover:underline">Back to Past Entries</span>
       </button>
+      <button
+        className="cursor-pointer mt-2 mb-6 bg-[#924343] hover:bg-[#7d3a3a] text-white font-semibold px-6 py-3 rounded-lg shadow transition-colors"
+        onClick={() => setShowModal(true)}
+      >
+        Delete This Entry
+      </button>
+      {/* Modal */}
+      {showModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80">
+          <div className="bg-white rounded-2xl p-8 max-w-md w-full shadow-lg flex flex-col items-center">
+            <h3 className="text-2xl font-serif font-bold mb-4 text-center text-[#a15555]">
+              Delete This Entry?
+            </h3>
+            <p className="text-lg font-sans text-center mb-6 text-gray-800">
+              This will permanently delete all data associated with this entry
+              from this device. This action cannot be undone.
+            </p>
+            <div className="flex gap-4">
+              <button
+                className="cursor-pointer bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold px-5 py-2 rounded-lg"
+                onClick={() => setShowModal(false)}
+              >
+                Cancel
+              </button>
+              <button
+                className="cursor-pointer bg-[#924343] hover:bg-[#7d3a3a] text-white font-semibold px-5 py-2 rounded-lg"
+                onClick={handleDelete}
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
