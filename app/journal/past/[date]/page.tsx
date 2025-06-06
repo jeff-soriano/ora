@@ -81,24 +81,24 @@ export default function PastJournalEntryPage() {
       </button>
       {/* Modal */}
       {showModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80">
-          <div className="bg-white rounded-2xl p-8 max-w-md w-full shadow-lg flex flex-col items-center">
-            <h3 className="text-2xl font-serif font-bold mb-4 text-center text-[#a15555]">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 px-2">
+          <div className="bg-white rounded-2xl p-4 md:p-8 max-w-xs md:max-w-md w-full shadow-lg flex flex-col items-center">
+            <h3 className="text-xl md:text-2xl font-serif font-bold mb-4 text-center text-[#a15555]">
               Delete This Entry?
             </h3>
-            <p className="text-lg font-sans text-center mb-6 text-gray-800">
+            <p className="text-base md:text-lg font-sans text-center mb-6 text-gray-800">
               This will permanently delete all data associated with this entry
               from this device. This action cannot be undone.
             </p>
-            <div className="flex gap-4">
+            <div className="flex flex-col justify-center items-center md:flex-row gap-3 md:gap-4 w-full">
               <button
-                className="cursor-pointer bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold px-5 py-2 rounded-lg"
+                className="cursor-pointer bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold px-5 py-2 rounded-lg w-full md:w-auto"
                 onClick={() => setShowModal(false)}
               >
                 Cancel
               </button>
               <button
-                className="cursor-pointer bg-[#924343] hover:bg-[#7d3a3a] text-white font-semibold px-5 py-2 rounded-lg"
+                className="cursor-pointer bg-[#924343] hover:bg-[#7d3a3a] text-white font-semibold px-5 py-2 rounded-lg w-full md:w-auto"
                 onClick={handleDelete}
               >
                 Delete
