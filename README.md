@@ -40,7 +40,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 ### June 5, 2025
 
 - Style changes, refactors
-- Add ai insight generator for past journal entry page
+- Add ai insight generator for past journal entry page. Ability to delete past journal entry
 - Add privacy, terms page. Links to Github and Linkedin
 - TODO: Dark mode toggle, responsive navbar. Add tests
 - QUESTIONS: Is there a way to have the user select the words in the passage by clicking on them in the Lectio step?
