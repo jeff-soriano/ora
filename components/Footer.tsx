@@ -1,3 +1,6 @@
+import Link from "next/link";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
+
 export default function Footer() {
   return (
     <footer className="w-full border-t border-gray-200 dark:border-gray-800">
@@ -7,20 +10,40 @@ export default function Footer() {
             © {new Date().getFullYear()} Ora. All rights reserved.
           </p>
           <div className="flex space-x-6">
-            <a
+            <Link
+              href="https://github.com/jeff-soriano/ora"
+              className="text-gray-400 hover:text-gray-500"
+              aria-label="Github"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaGithub size={"2rem"} />
+            </Link>
+            <Link
+              href="https://www.linkedin.com/in/jeff-soriano/"
+              className="text-gray-400 hover:text-gray-500"
+              aria-label="LinkedIn"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaLinkedin size={"2rem"} />
+            </Link>
+          </div>
+          <div className="flex space-x-6">
+            <Link
               href="/privacy"
-              className="text-gray-400 hover:text-gray-500 dark:hover:text-gray-300"
+              className="text-gray-400 hover:text-gray-500"
               aria-label="Privacy Policy"
             >
               Privacy Policy
-            </a>
-            <a
+            </Link>
+            <Link
               href="/terms"
-              className="text-gray-400 hover:text-gray-500 dark:hover:text-gray-300"
+              className="text-gray-400 hover:text-gray-500"
               aria-label="Terms of Service"
             >
               Terms of Service
-            </a>
+            </Link>
           </div>
         </div>
       </div>
