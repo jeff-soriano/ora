@@ -28,7 +28,7 @@ export default function Home() {
         </div>
 
         <Link href="/journal">
-          <button className="px-8 py-3 bg-white border border-black rounded-full hover:bg-gray-50 transition-colors cursor-pointer">
+          <button className="font-semibold px-8 py-3 bg-white border border-black rounded-full hover:bg-gray-50 transition-colors cursor-pointer">
             Begin Prayer
           </button>
         </Link>

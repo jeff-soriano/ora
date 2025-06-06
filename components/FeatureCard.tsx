@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from "next/link";
 
 interface FeatureCardProps {
   href: string;
@@ -7,16 +7,19 @@ interface FeatureCardProps {
   description: string;
 }
 
-export function FeatureCard({ href, icon, title, description }: FeatureCardProps) {
+export function FeatureCard({
+  href,
+  icon,
+  title,
+  description,
+}: FeatureCardProps) {
   return (
     <Link href={href}>
-      <div className="h-full p-8 rounded-2xl border text-center space-y-4 hover:border-black transition-colors cursor-pointer">
-        <div className="flex justify-center">
-          {icon}
-        </div>
+      <div className="h-full p-8 rounded-2xl border border-gray-300 text-center space-y-4 hover:border-black transition-colors cursor-pointer">
+        <div className="flex justify-center">{icon}</div>
         <h2 className="text-xl font-serif">{title}</h2>
         <p className="text-gray-600">{description}</p>
       </div>
     </Link>
   );
-} 
+}
